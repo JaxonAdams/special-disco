@@ -2,6 +2,7 @@
 from flask import Flask, redirect, request
 from markupsafe import escape
 from controllers import url_controller
+from utils import post_utils
 import db
 
 # initialize app
@@ -20,13 +21,20 @@ def testing(url_key):
     return redirect('https://www.google.com/')
 
 # api routes
-@app.route('/api/url', methods=['GET', 'POST'])
+@app.route('/api/url', methods=['POST'])
 def new_url():
-    body = request.get_json()
-    
-    # if valid payload and valid url -- success
-    if url_controller.is_valid_post_payload(body):
-        return url_controller.post_url(body), 200
+    if request.method == 'POST':
+        body = request.get_json()
+        
+        # if valid payload and valid url -- success
+        if post_utils.is_valid_post_payload(body):
+            return url_controller.post_url(body, db_col), 200
 
-    # 400 error, bad request
-    return '<p>Invalid request, please try again.</p>', 400
+        # 400 error, bad request
+        return {
+            "error": "Invalid request; please check request body."
+        }, 400
+    else:
+        return {
+            "error": f"Invalid request method. Available methods for this url: 'POST'"
+        }, 400

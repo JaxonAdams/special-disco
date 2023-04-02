@@ -1,15 +1,22 @@
-import re
+from utils import post_utils
 
-def is_valid_post_payload(req_body):
-    http_pattern = '^https?://.*\.\w{2,4}/?$'
+def post_url(req_body, db):
+    # check if url already in db
+    doc = db.find_one({ "url": req_body["url"] }, { "_id": 0 })
+
+    if doc is not None:
+        return doc
     
-    if isinstance(req_body, dict):
-        if 'url' in req_body:
-            if re.search(http_pattern, req_body['url']):
-                return True
+    # generate id
+    while True:
+        new_id = post_utils.generate_id()
+
+        if db.find_one({ "id": new_id }) is None:
+            break
     
-    return False
+    # insert doc
+    new_doc = { "id": new_id, "url": req_body["url"] }
 
+    db.insert_one(new_doc)
 
-def post_url(req_body):
-    return req_body
+    return new_doc
