@@ -17,8 +17,12 @@ def hello_world():
     return '<h1>Hello, world!</h1>'
 
 @app.route('/<url_key>')
-def testing(url_key):
-    return redirect('https://www.google.com/')
+def redirect_to_url(url_key):
+    url_doc = url_controller.get_url({ 'id': url_key }, db_col)
+    if url_doc is not None:
+        return redirect(url_doc['url'])
+    else:
+        return redirect('/')
 
 # api routes
 @app.route('/api/url', methods=['POST'])
