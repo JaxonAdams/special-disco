@@ -5,6 +5,7 @@ def post_url(req_body, db):
     doc = db.find_one({ "url": req_body["url"] }, { "_id": 0 })
 
     if doc is not None:
+        print(doc)
         return doc
     
     # generate id
@@ -20,3 +21,12 @@ def post_url(req_body, db):
     db.insert_one(new_doc)
 
     return new_doc
+
+def get_url(req_body, db):
+    # return document, find by url or id
+    if "id" in req_body:
+        doc = db.find_one({ "id": req_body["id"] }, { "_id": 0 })
+    elif "url" in req_body:
+        doc = db.find_one({ "url": req_body["url"] }, { "_id": 0 })
+
+    return doc
