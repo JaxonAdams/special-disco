@@ -1,5 +1,5 @@
 # imports
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, render_template
 from markupsafe import escape
 from controllers import url_controller
 from utils import post_utils
@@ -12,9 +12,8 @@ db_col = db.connect_to_db()
 
 # routes
 @app.route('/')
-def hello_world():
-    print(db_col.find_one())
-    return '<h1>Hello, world!</h1>'
+def index():
+    return render_template('index.html')
 
 @app.route('/<url_key>')
 def redirect_to_url(url_key):
