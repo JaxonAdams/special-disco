@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu&display=swap');
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     background-color: #f4f4f4;
 }
 
@@ -38,4 +38,54 @@ body {
 
 .card>* {
     text-align: center;
+}
+
+.card-title {
+    margin-bottom: 8px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem;
+}
+
+.form>* {
+    margin: 5px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 15px;
+}
+
+.input {
+    border: 3px solid #0e3280;
+    width: 90%;
+}
+
+.input:focus {
+    border: 3px solid black;
+}
+
+.submit {
+    cursor: pointer;
+    padding: 0.5rem 2rem;
+    margin: 2rem 0;
+    border: none;
+    color: #f4f4f4;
+    background-color: #0e3280;
+    transition: all 0.3s ease;
+}
+
+.submit:hover {
+    color: black;
+    background-color: #FCA311;
+    transition: all 0.3s ease;
+}
+
+textarea {
+    resize: none;
+    width: 90%;
 }
