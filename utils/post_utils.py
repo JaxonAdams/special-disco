@@ -2,7 +2,7 @@ import re
 import random
 
 def is_valid_post_payload(req_body):
-    http_pattern = '^https?://.*\.\w{2,4}/?$'
+    http_pattern = '^https?://.*\.\w{2,4}\S*$'
     
     if isinstance(req_body, dict):
         if 'url' in req_body:

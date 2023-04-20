@@ -18,8 +18,9 @@ def post_url(req_body, db):
     # insert doc
     new_doc = { "id": new_id, "url": req_body["url"] }
 
-    db.insert_one(new_doc)
+    inserted = db.insert_one(new_doc)
 
+    del new_doc['_id']
     return new_doc
 
 def get_url(req_body, db):
