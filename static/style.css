@@ -89,3 +89,32 @@ textarea {
     resize: none;
     width: 90%;
 }
+
+
+@media screen and (max-width: 450px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .card {
+        width: 300px;
+    }
+
+    .form>* {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .card {
+        width: 275px;
+    }
+
+    .form>* {
+        font-size: 0.7rem;
+    }
+}
