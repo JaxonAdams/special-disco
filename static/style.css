@@ -90,6 +90,10 @@ textarea {
     width: 90%;
 }
 
+.error {
+    color: tomato;
+}
+
 
 @media screen and (max-width: 450px) {
     .title {

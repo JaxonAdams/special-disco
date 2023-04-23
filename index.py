@@ -1,6 +1,5 @@
 # imports
 from flask import Flask, redirect, request, render_template
-from markupsafe import escape
 from controllers import url_controller
 from utils import post_utils
 import db
