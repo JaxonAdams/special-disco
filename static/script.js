@@ -57,7 +57,9 @@ const formSubmit = async e => {
 
     console.log(response);
 
-    displayArea.innerText = window.location.href.slice(0, window.location.href.length-1) + response.id;
+    newUrl = window.location.href.endsWith('?') ? window.location.href.slice(0, window.location.href.length-1) + response.id : window.location.href + response.id;
+
+    displayArea.innerText = newUrl;
 };
 
 form.addEventListener('submit', formSubmit);
