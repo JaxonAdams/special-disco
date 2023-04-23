@@ -15,9 +15,10 @@
             <form class="form" id="url-form">
                 <input class="input" id="txt-input" placeholder="Your URL ... " />
                 <button class="submit" id="submit">Submit</button>
-                <textarea disabled placeholder="Submit a URL ... "></textarea>
+                <textarea readonly id="display-area" placeholder="Submit a URL to shorten ... "></textarea>
             </form>
         </div>
     </main>
+    <script src={{ url_for('static', filename='script.js') }}></script>
 </body>
 </html>
